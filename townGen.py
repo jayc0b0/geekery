@@ -8,20 +8,40 @@ but may be used for whatever else.
 import random
 
 size =[
+    "small",
+    "medium",
+    "large",
+    "other"
+]
+
+typeSmall =[
     "Shanty Town",
     "Couple of Villas",
     "Small Village",
+    "Tent City",
+    "Outpost",
+]
+
+typeMedium =[
     "Medium Village",
-    "Large Village",
     "Small City",
+    "Fort",
+    "Factory Town",
+    "Mill Town",
+]
+
+typeLarge =[
     "Medium City",
     "Large City",
-    "Tent City",
-    "Underground Village",
-    "Ruined Village",
-    "Fort",
-    "Factory/Mill Town"
+    "Castle and its lands",
+    "Large Village",
 ]
+
+typeOther =[
+    "Ruined Village",
+    "Underground Village",
+]
+
 feature = [
     "TEMPLE",
     "SHADY BAR",
@@ -55,20 +75,24 @@ hook = [
     "mysterious lights in the distance"
 ]
 
+def townPick(size):
+    if size == "small":
+        return random.choice(typeSmall)
+    elif size == "medium":
+        return random.choice(typeMedium)
+    elif size == "large":
+        return random.choice(typeLarge)
+    elif size == "other":
+        return random.choice(typeOther)
+    else:
+        return "Error in townPick()"
+
 size = random.choice(size)
+town = townPick(size)
 feature1 = random.choice(feature)
 feature2 = random.choice(feature)
 plotHook = random.choice(hook)
 
-def dupeCheck():
-    if str(feature1) == str(feature2):
-        random.choice(feature)
-        dupeCheck()
-    else:
-        pass
-
-dupeCheck()
-
-print "You come across a %s." % size.upper()
+print "You come across a %s." % town.upper()
 print "It has a %s and a %s." % (feature1, feature2)
-print "There are whispers of %s" % plotHook.upper()
+print "There are whispers of %s." % plotHook.upper()
