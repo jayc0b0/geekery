@@ -87,12 +87,25 @@ def townPick(size):
     else:
         return "Error in townPick()"
 
+def featurePrint(size):
+    if size == "small":
+        print "It has a %s." % feature1.upper()
+    elif size == "medium":
+        print "It has a %s and a %s." % (feature1.upper(), feature2.upper())
+    elif size == "large":
+        print "It has a %s, a %s, and a %s." % (feature1.upper(), feature2.upper(), feature3.upper())
+    elif size == "other":
+        print "It has a %s and a %s." % (feature1.upper(), feature2.upper())
+    else:
+        return "Error in featurePrint()"
+
 size = random.choice(size)
 town = townPick(size)
 feature1 = random.choice(feature)
 feature2 = random.choice(feature)
+feature3 = random.choice(feature)
 plotHook = random.choice(hook)
 
 print "You come across a %s." % town.upper()
-print "It has a %s and a %s." % (feature1, feature2)
+featurePrint(size)
 print "There are whispers of %s." % plotHook.upper()
